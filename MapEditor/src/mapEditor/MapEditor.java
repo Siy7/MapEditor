@@ -1,7 +1,10 @@
 package mapEditor;
 
 public class MapEditor {
-	public static void main(final String[] args) {
-		System.out.println("Hello Github :-)");
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
+
 }
