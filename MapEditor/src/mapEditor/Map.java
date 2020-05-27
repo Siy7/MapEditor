@@ -3,6 +3,7 @@ package mapEditor;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -12,7 +13,9 @@ import javax.imageio.ImageIO;
 import helper.ErrorCode;
 import helper.MapEditorException;
 
-public class Map {
+public class Map implements Serializable {
+
+	private static final long serialVersionUID = -5987790941979483488L;
 	private final int[][] mapEditorArray;
 	private final List<BufferedImage> tilesetList = new ArrayList<>();
 
@@ -43,8 +46,7 @@ public class Map {
 				}
 			}
 		} catch (final IOException e) {
-			LOGGER.info(e.getMessage());
-			System.err.println("Tileset " + tilesetFilename + " nicht gefunden.");
+			LOGGER.warning("Tileset " + tilesetFilename + " nicht gefunden." + e.getMessage());
 		}
 	}
 
@@ -71,6 +73,10 @@ public class Map {
 
 	public void setMapName(final String mapName) {
 		this.mapName = mapName;
+	}
+
+	public int[][] getMapEditorArray() {
+		return mapEditorArray;
 	}
 
 }
